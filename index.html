@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>サイコロゲーム</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; }
+    h1 { font-size: 80px; margin: 50px; }
+    button { font-size: 24px; margin: 10px; padding: 10px 30px; }
+  </style>
+</head>
+<body>
+  <h1 id="dice">🎲</h1>
+  <button onclick="startRolling()">スタート</button>
+  <button onclick="stopRolling()">ストップ</button>
+
+  <script>
+    let intervalId = null;
+
+    function startRolling() {
+      if (intervalId === null) {
+        intervalId = setInterval(() => {
+          const num = Math.floor(Math.random() * 6) + 1;
+          document.getElementById("dice").textContent = num;
+        }, 100);
+      }
+    }
+
+    function stopRolling() {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  </script>
+</body>
+</html>
